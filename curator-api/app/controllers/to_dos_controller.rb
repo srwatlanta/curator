@@ -16,6 +16,6 @@ class ToDosController < ApplicationController
   private
 
   def to_do_params
-    params.require(:to_do).permit(:item, :comment, :urgency)
+    params.require(:to_do).permit(:user_id, :item, :comment, :urgency)
   end
 end

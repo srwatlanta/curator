@@ -16,6 +16,6 @@ class FlashCardsController < ApplicationController
   private
 
   def flash_card_params
-    params.require(:flash_card).permit(:clue, :answer)
+    params.require(:flash_card).permit(:user_id, :clue, :answer)
   end
 end
