@@ -1,18 +1,44 @@
 document.addEventListener("DOMContentLoaded", function (){
-    //1. Fetch User & Render to Page 
-        //Fetch Request w/for each to render each to-do for the user 
-
+   
     //Global Variables 
-    
-    const userURL = `http://localhost:3000/user`
-    let tasksCollection = document.createElement("div")
-    tasksCollection.className = "card"
-    main.appendChild(tasksCollection)
+    const usersURL = `http://localhost:3000/users`
+
+        //READ
+        fetch(usersURL)
+        .then(res => res.json())
+        .then(data => iterateOverTasks(ToDo))
+
+        function iterateOverTasks(tasks){
+            tasks.forEach(task => {
+
+            const list = document.getElementById("tasks-list")
+
+            let li =  document.createElement("li")
+            let h3 = document.createElement("h4") //item name 
+            let p = document.createElement("p")//comment note 
+            let editButton = document.createElement("button")
+            let doneButton = document.createElement("button")
+            let deleteButton = document.createElement("button")
+
+            likeButton.innerText = "like"
+            editButton.innerText = "edit"
+            deleteButton.innerText = "delete"
+            h3.innerText = to_do.item 
+            p.innerText = to_do.comment 
+
+            li.append(h2,p,likeButton, editButton, deleteButton)
+            likeButton.addEventListener("click", (event))
+            editButton.addEventListener("click", (event))
+            deleteButton.addEventListener("click", (event))
+
+            tasksCollection.append(li)
+
+            li.addEventListener("click", (event) => addATask(user))  
+            })
+        }
 })
 //     //READ 
-//          fetch
-//             .then(res => res.json())
-//             .then(userData => iterateOverToDos())
+//          
     
 //     function iterateOverToDos(tasks){
 //          tasks.forEach(tasks => {
@@ -48,8 +74,3 @@ document.addEventListener("DOMContentLoaded", function (){
 //       }
 //     })  
     
-    
-    
-    
-
-// const userURL =  `http://localhost:3000/user/1`
