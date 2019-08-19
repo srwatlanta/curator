@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# User.create(username: "srwatlanta")
-# User.create(username: "ehawkins")
+User.create(username: "srwatlanta")
+User.create(username: "ehawkins")
 
 ToDo.create(item: "Buy groceries", comment: "broccoli, tomato soup", urgency: "green", user_id: 1)
 ToDo.create(item: "Do laundry", comment: "you smell", urgency: "red", user_id: 1)
