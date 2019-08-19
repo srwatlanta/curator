@@ -5,6 +5,7 @@ class UsersController < ApplicationController
                                  :videos => { :only => [:id, :video_url] },
                                  :to_dos => { :only => [:id, :item, :comment, :urgency] },
                                  :flash_cards => { :only => [:id, :clue, :answer] },
+                                 :backgrounds => { :only => [:id, :url] },
                                }, :except => [:updated_at])
   end
 
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
                                 :videos => { :only => [:id, :video_url] },
                                 :to_dos => { :only => [:id, :item, :comment, :urgency] },
                                 :flash_cards => { :only => [:id, :clue, :answer] },
+                                :backgrounds => { :only => [:id, :url] },
                               }, :except => [:updated_at])
   end
 end
