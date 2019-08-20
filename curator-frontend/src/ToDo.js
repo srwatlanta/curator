@@ -1,19 +1,21 @@
-document.addEventListener("DOMContentLoaded", function (){
-   
-    //Global Variables 
+
+//Global Variables 
     const usersURL = `http://localhost:3000/users/1`
     const taskList = document.getElementById("tasks-list")
 
         //READ
-        fetch(usersURL)
+        function getTasks(){
+        fetch(`http://localhost:3000/users/1`)
         .then(res => res.json())
         .then(data => iterateOverTasks(data))
+        }
 
-        function iterateOverTasks(ToDo){
-            ToDo.forEach(task => {
+        function iterateOverTasks(data){
+            data.to_do.forEach(task =>(renderTask(task))) 
+        }
 
-            const list = document.getElementById("tasks-list")
-
+        function renderTask(task) {
+          
             let li =  document.createElement("li")
             let h3 = document.createElement("h4") //item name 
             let p = document.createElement("p")//comment note 
@@ -24,20 +26,34 @@ document.addEventListener("DOMContentLoaded", function (){
             completeButton.innerText = "like"
             editButton.innerText = "edit"
             deleteButton.innerText = "delete"
-            h3.innerText = To_Do.item 
-            p.innerText = to_do.comment 
+            
+            h3.innerText = task.item
+            
+            p.innerText = task.comment 
 
-            li.append(h2,p, completeButton, editButton, deleteButton)
+            li.append(h3, p, completeButton, editButton, deleteButton)
+
             completeButton.addEventListener("click", (event))
             editButton.addEventListener("click", (event))
             deleteButton.addEventListener("click", (event))
 
             taskList.append(li)
- 
-            })
+    
+        renderTask()
         }
 
-            // li.addEventListener("click", (event) => addATask(user)) 
-})
-
-    
+        // function addATask(){
+        //     fetch(usersURL, {
+        //     method: "POST", 
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "Accept": "application/json",
+        //     },
+        //     body: JSON.stringify({formData})
+        
+        //     }).then(res => res.json())
+        // .then(task => renderTask(task))
+        // }
+        
+        // renderTask()
+     
