@@ -1,41 +1,54 @@
 const renderCard = (card) => {  
-    let answerDiv = document.createElement("div")
-    answerDiv.innerHTML = `
-    <h3 class="uk-heading-small">${card.answer}</h3>
-    `
-    answerDiv.style.display = "none"
-    answerDiv.addEventListener("click", () => flipCard(answerDiv))
+    let answerDiv = document.getElementById("card-answer-div")
+    answerDiv.innerHTML = `<p class="uk-heading-small uk-position-center">${card.answer}</h3>`
 
-
-    let clueDiv = document.createElement("div")
-    clueDiv.innerHTML = `
-    <h1 class="uk-heading-medium">${card.clue}</h1>
-    `
-    clueDiv.addEventListener("click", () => flipCard(answerDiv))
-    
-    flashCardDiv.append(clueDiv, answerDiv)
-}
-
-const flipCard = (div) => {
-    if(div.style.display === "none") {
-        div.style.display = ""
-    } else {
-        div.style.display = "none"
-    }
+    let clueDiv = document.getElementById("card-clue-div")
+    clueDiv.innerHTML = `<p class="uk-heading-medium uk-position-center">${card.clue}</h1>`
 }
 
 const nextCard = () => {
     flashCardDiv.innerHTML = ""
     ++flashCardCount
-    if(flashCardCount === flashCardArray.length){
+    if(flashCardCount >= flashCardArray.length){
         flashCardCount = 0
     }
     renderCard(flashCardArray[flashCardCount])
 }
 
 const newCard = (event) => {
-    console.log(event.target.parentNode)
+    event.preventDefault()
+    fClue = document.getElementById("flash-clue")
+    fAnswer = document.getElementById("flash-answer")
+    newCardFetch(fClue, fAnswer)
+    fClue.value = ""
+    fAnswer.value = ""
+}
+
+const newCardFetch = (fClue, fAnswer) => {
+    fetch(flashCardUrl, {
+        method: "POST",
+        headers: {
+            "Content-Type": 'application/json',
+            "Accept": 'application/json'
+        },
+        body: JSON.stringify({
+            user_id: 1,
+            clue: fClue.value,
+            answer: fAnswer.value
+        })
+    })
+    .then(res => res.json())
+    .then(card => flashCardArray.push(card))
+}
+
+const deleteFetch = () => {
+    fetch(flashCardUrl + '/' + flashCardArray[flashCardCount].id, {
+    method: "DELETE"
+    })
+    .then(flashCardArray.splice(flashCardCount, 1))
+    .then(nextCard())
 }
 
 nextFlashCard.addEventListener("click", () => nextCard())
-newFlashCard.addEventListener("click", () => newCardFetch(event))
+newFlashCardForm.addEventListener("submit", () => newCard(event))
+deleteFlashCard.addEventListener("click", () => deleteFetch())
