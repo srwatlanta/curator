@@ -17,7 +17,6 @@ function createLi(task){
     let li = document.createElement("li")
     li.className = "task-li"
     li.id = `to_dos.id`
-    console.log(li.id)
 
     let taskDiv = document.createElement("div")
     taskDiv.className = "uk-width-4-5"
@@ -83,8 +82,8 @@ function createLi(task){
             <li><a href="#">Medium</a></li>
             <li><a href="#">Low</a></li>
         </ul>
-    </div>
-</div>
+     </div>
+   </div>
     `
 
     buttonDiv.append(editButton, doneButton, deleteButton, priorityDropDown)
@@ -94,8 +93,9 @@ function createLi(task){
     list.append(li) 
 }
 
-function deleteTask(event, id ){
+function deleteTask(event, id){
     let li = document.getElementById(task.id)
+    console.log(task.id)
     li.remove()
     fetch(usersURL, {
         method: "DELETE"
