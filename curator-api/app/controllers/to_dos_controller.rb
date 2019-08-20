@@ -1,11 +1,13 @@
 class ToDosController < ApplicationController
   def create
-    ToDo.create(to_do_params)
+    newLi = ToDo.create(to_do_params)
+    render json: newLi
   end
 
   def update
     to_do = ToDo.find_by(id: params[:id])
-      .updato_dote(to_do_params)
+    to_do.update(to_do_params)
+    render json: to_do
   end
 
   def destroy
@@ -18,5 +20,4 @@ class ToDosController < ApplicationController
   def to_do_params
     params.require(:to_do).permit(:user_id, :item, :comment, :urgency)
   end
-
 end

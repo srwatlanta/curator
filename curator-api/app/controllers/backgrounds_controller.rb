@@ -1,6 +1,11 @@
 class BackgroundsController < ApplicationController
   def create
-    Background.create(flash_card_params)
+    background = Background.create(flash_card_params)
+  end
+
+  def destroy
+    background = Background.find_by(id: params[:id])
+    background.delete
   end
 
   private

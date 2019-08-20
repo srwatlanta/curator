@@ -25,22 +25,11 @@ const searchFetch = (event, query) => {
 
 const renderPainting = (painting) => {
     artDiv.innerHTML = ""
-    const h3 = document.createElement("h3")
-    const p = document.createElement("p")
-    const img = document.createElement("img")
-
-
-    img.src = painting.primaryImage
-    img.style.width = "80%"
-    img.className = "uk-img uk-align-center"
-
-    p.innerText = `Year: ${painting.objectBeginDate}`
-    p.className = "uk-align-center"
-
-    h3.innerText = `Title: ${painting.title}`
-    h3.className = "uk-align-center"
-
-    artDiv.append(img, h3, p)
+    artDiv.innerHTML = `
+    <img src="${painting.primaryImage}" width="80%" class="uk-img uk-align-center">
+    <h3 class="uk-align-center">Title: ${painting.title}</h3>
+    <p class="uk-align-center">Year: ${painting.objectBeginDate}</p>
+    `
 }
 
 const randomNum = (length) => {

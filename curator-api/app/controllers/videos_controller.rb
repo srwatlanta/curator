@@ -1,12 +1,13 @@
 class VideosController < ApplicationController
   def create
-    Video.create(video_params)
+    video = Video.create(video_params)
+    render json: video
   end
 
-  def update
-    video = Video.find_by(id: params[:id])
-    video.update(video_params)
-  end
+  # def update
+  #   video = Video.find_by(id: params[:id])
+  #   video.update(video_params)
+  # end
 
   def destroy
     video = Video.find_by(id: params[:id])
