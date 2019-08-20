@@ -17,44 +17,101 @@
     <script src="./src/art.js" defer></script>
   </head>
   <body>
-    <header>
+    <header class="uk-align-center">
       <h2 class="uk-heading-large">Curator</h2>
     </header>
-    <main class="uk-grid-divider">
-      
-      <div id="tasks-collection" class="uk-width-1-3 uk-card uk-card-default uk-padding uk-align-center" uk-grid> 
-        <h2 class="uk-heading-medium">To Do List</h2>
-        <ul id ="tasks-list" class="uk-list uk-list-striped">
-          
-        </ul>
-      </div>  
-      <div class="uk-width-1-3 uk-card uk-card-default uk-padding uk-margin-left">
-        <form id="art-div" class="uk-card-header">
-          <h3>Art!</h3>
-          <div class="uk-margin-small">
-            <input id="art-search-input" class="uk-search-input" type="search" placeholder="Paintings!">
+    <main>
+
+      <div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: true">
+
+        <div id="tasks-collection" class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle"> 
+          <div>          
+            <h2 class="uk-heading-small">To Do List</h2>
           </div>
-          <button id="art-search-submit" class="uk-button uk-button-danger">Search</button>      
+          <div>
+            <ul id ="tasks-list" class="uk-list uk-list-striped">
+            </ul>
+          </div>
+        </div>
+
+        
+        <div id= "flash-card-div" class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle">
+          <div id="card-button-div" class="uk-align-center">
+            <button id="next-flash-card" class="uk-padding uk-flex-column uk-button uk-button-danger" uk-icon="arrow-right"></button>
+            <button id="new-flash-card" class="uk-padding uk-flex-column uk-button uk-button-danger" uk-icon="plus" uk-toggle="target: #new-flash-card-form-container"></button>
+            <button id="delete-flash-card" class="uk-padding uk-flex-column uk-button uk-button-danger" uk-icon="trash"></button>
+          </div>
+          <div class="uk-align-center uk-padding">
+            <div class="card uk-align-left uk-padding">
+              <div class="content">
+                <div id= "card-clue-div" class="front">
+                </div>
+                <div id= "card-answer-div" class="back">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+        
+        <div id="art-div" class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middleuk-padding">
+          <div>
+            <form id="art-div-form" class="uk-card-header">
+              <h3>Art!</h3>
+              <div class="uk-margin-small">
+                <input id="art-search-input" class="uk-search-input" type="search" placeholder="Paintings!">
+              </div>
+              <button id="art-search-submit" class="uk-button uk-button-danger" uk-icon="search">Search</button>      
+            </form>
+          </div>
+          <div id= "art-div" class="">
+            <div id="art-img-div">
+            </div>
+          </div>
+        </div>
+
+        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middleuk-padding" id= "video-div" > 
+          <div id="card-button-div" class="uk-align-center">
+            <button id="next-video" class="uk-padding uk-flex-column uk-button uk-button-danger" uk-icon="arrow-right"></button>
+            <button id="new-video" class="uk-padding uk-flex-column uk-button uk-button-danger" uk-icon="plus" uk-toggle="target: #new-video-form-container"></button>
+            <button id="delete-video" class="uk-padding uk-flex-column uk-button uk-button-danger" uk-icon="trash"></button>
+          </div>
+        </div> 
+
+      </div>    
+    </main>
+
+    <div id="new-flash-card-form-container" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <form id="new-flash-card-form">
+          <h3>Insert New Flash Card</h3>
+          <div>
+            <div class="uk-margin-small">
+              <input id="flash-clue" type="text" class="uk-input" placeholder="Clue">
+            </div>
+            <div class="uk-margin-small">
+              <textarea id="flash-answer" type="text" class="uk-textarea" placeholder="Answer" style="resize:none"></textarea>
+            </div>
+            <button class="uk-button uk-button-default" uk-toggle="target: #new-flash-card-form-container">Add Card</button>
+          </div>
         </form>
       </div>
-      <div id= "art-div" class="uk-width-1-3@m" uk-grid>
-        <div id="art-img-div">
-      
-        </div>
+    </div>
+
+    <div id="new-video-form-container" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <form id="new-video-form">
+          <h3>Insert New Video</h3>
+          <div>
+            <div class="uk-margin-small">
+              <input id="flash-clue" type="text" class="uk-input" placeholder="Video Url">
+            </div>
+            <button class="uk-button uk-button-default" uk-toggle="target: #new-video-form-container">Add Videov</button>
+          </div>
+        </form>
       </div>
-
-      <div class="uk-grid" id= "poem-div" > 
-
-      </div> 
-
-      <div class="uk-grid" id= "quote-div" > 
-
-      </div> 
-
-      <div class="uk-grid" id= "weather-div" > 
-        
-      </div>      
-  </main>
+    </div>
 
   </body>
 </html>
