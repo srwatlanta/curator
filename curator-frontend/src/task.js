@@ -1,37 +1,13 @@
-const usersURL = `http://localhost:3000/users/1`
+let taskId
+let userId
+   
+   
+   function createLi(task){
 
-const flashCardUrl = "http://localhost:3000/flash_cards"
-const nextFlashCard = document.getElementById("next-flash-card")
-const newFlashCardForm = document.getElementById("new-flash-card-form-container")
-const flashCardDiv = document.getElementById("card-answer-div")
-const deleteFlashCard = document.getElementById("delete-flash-card")
-let flashCardCount
-let flashCardArray = []
-
-const videoUrl = "http://localhost:3000/video"
-const nextVideo = document.getElementById("next-flash-card")
-const newVideoForm = document.getElementById("new-flash-card-form-container")
-const videoDiv = document.getElementById("card-answer-div")
-const deleteVideo = document.getElementById("delete-flash-card")
-let videoCount
-let videoArray = []
-
-   //READ
-const fetchToDoList = () => {
-    fetch(usersURL)
-    .then(res => res.json())
-    .then(data => {
-        data.to_dos.forEach(createLi)
-        data.flash_cards.forEach(card => flashCardArray.push(card))
-        data.videos.forEach(video => videoArray.push(video))
-        flashCardCount = 0
-        renderCard(flashCardArray[flashCardCount])
-    })
-}
-
-function createLi(task){
     const list = document.getElementById("tasks-list")
     let li = document.createElement("li")
+    li.className = "task-li"
+    li.id = `to_dos.id`
 
     let taskDiv = document.createElement("div")
     taskDiv.className = "uk-width-4-5"
@@ -43,35 +19,144 @@ function createLi(task){
     span.className = "uk-text-meta"
     
     let buttonDiv = document.createElement("div")
+    buttonDiv.className = "uk-button-group"
     taskDiv.className = "list-item-menu"
 
+    
     let editButton = document.createElement("button")
-    editButton.addEventListener("click", () => editTask(event, task))
-    editButton.innerText = "edit"
+    editButton.addEventListener("click", ()=> setId(task))
     editButton.className = "edit-button"
-
+    editButton.innerHTML = 
+    `
+    <li>
+       <div class="list-item-menu">
+           <a class="edit-button" uk-toggle="target: #edit-task-form-container" uk-icon= "icon: pencil"></a>
+       </div> 
+   </li> 
+       `
     
     let doneButton = document.createElement("button")
     doneButton.addEventListener("click", () => finishTask(event, task))
-    doneButton.innerText = "finished"
     doneButton.className = "done-button"
+    doneButton.innerHTML = 
+    `
+    <li>
+       <div class="list-item-menu">
+           <a class="done-button" uk-icon= "icon: check"></a>
+       </div> 
+   </li> 
+       `
 
-    
     let deleteButton = document.createElement("button")
     deleteButton.addEventListener("click", () => deleteTask(event, task))
-    deleteButton.innerText = "delete"
     deleteButton.className = "delete-button"
-    deleteButton.icon = "icon:trash"
+    deleteButton.innerHTML = 
+    `
+    <li>
+       <div class="list-item-menu">
+           <a class="delete-button" uk-icon= "icon: trash "></a>
+       </div> 
+   </li> 
+       `
 
-    buttonDiv.append(editButton, doneButton, deleteButton)
+    let priorityDropDown = document.createElement("button")
+    priorityDropDown.addEventListener("click", () => setPriority(event, task))
+    priorityDropDown.innerHTML = 
+    `
+    <div class="uk-inline">
+    <button class="uk-button uk-button-default" type="button">Priority</button>
+    <div uk-dropdown="pos: right-center">
+        <ul class="uk-nav uk-dropdown-nav">
+            <li><a href="#">High</a></li>
+            <li><a href="#">Medium</a></li>
+            <li><a href="#">Low</a></li>
+        </ul>
+    </div>
+</div>
+    `
+
+    buttonDiv.append(editButton, doneButton, deleteButton, priorityDropDown)
     taskDiv.append(strongspan, span)
 
     li.append(taskDiv, buttonDiv)
-    list.append(li)
+    list.append(li) 
+}
+    
+function deleteTask(event, task){
+ const list = document.getElementById("tasks-list")
+ const li4removal = document.getElementById("to_dos.id")
+    li4removal.parentNode.removeChild(li4removal)
+    fetch(`http://localhost:3000/to_dos/${task.id}`,{
+    method: "delete"
+    })
 }
 
 
-//FUNCTION CALLS
-fetchToDoList()
+function setId(task){
+    taskId = task.id
+}
 
+    const submitEditForm = document.getElementById("edit-task-form")
+    submitEditForm.addEventListener('submit', () => editTask(event))
+
+    const editTask = (event) => {
+    event.preventDefault()
+    const editTaskURL = `http://localhost:3000/to_dos`
+    let editTaskName = document.getElementById("edit-task-name")
+    let editTaskComment = document.getElementById("edit-task-comment")
+    let editTaskUrgency = document.getElementById("edit-priority")
+    fetch(`http://localhost:3000/to_dos/${taskId}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type" : "application/json", 
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            item: editTaskName.value, 
+            comment: editTaskComment.value,
+            urgency: editTaskUrgency.value
+        })
+    })
+}
+
+
+    function userId(task){
+        task = task.id
+    }
+
+    const submitNewTaskForm = document.getElementById("new-task-form")
+    submitNewTaskForm.addEventListener('submit', () => createTask(event))
+
+        
+    const createTask = (event) => {
+        event.preventDefault()
+        let newTaskName = document.getElementById("task-name")
+        let newTaskComment = document.getElementById("task-comments")
+        let newTaskUrgency = document.getElementById("priority")
+        fetch(`http://localhost:3000/to_dos`, {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                item: newTaskName.value, 
+                comment: newTaskComment.value,
+                urgency: newTaskUrgency.value
+            })
+            
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+    }
     
+
+    // const finishTask = (event,task)
+    // //should strikethrough the task upon click 
+
+    // const li4strikethrough = document.getElementById("to_dos.id")
+    // .addEventListener("click", () => (ev
+
+
+
+

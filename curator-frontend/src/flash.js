@@ -1,3 +1,11 @@
+const flashCardUrl = "http://localhost:3000/flash_cards"
+const nextFlashCard = document.getElementById("next-flash-card")
+const newFlashCardForm = document.getElementById("new-flash-card-form-container")
+const flashCardDiv = document.getElementById("card-answer-div")
+const deleteFlashCard = document.getElementById("delete-flash-card")
+let flashCardCount
+let flashCardArray = []
+
 const renderCard = (card) => {  
     let answerDiv = document.getElementById("card-answer-div")
     answerDiv.innerHTML = `<p class="uk-heading-small uk-position-center">${card.answer}</h3>`
@@ -52,3 +60,4 @@ const deleteFetch = () => {
 nextFlashCard.addEventListener("click", () => nextCard())
 newFlashCardForm.addEventListener("submit", () => newCard(event))
 deleteFlashCard.addEventListener("click", () => deleteFetch())
+    
