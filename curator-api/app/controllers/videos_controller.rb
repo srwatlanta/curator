@@ -4,11 +4,6 @@ class VideosController < ApplicationController
     render json: video
   end
 
-  # def update
-  #   video = Video.find_by(id: params[:id])
-  #   video.update(video_params)
-  # end
-
   def destroy
     video = Video.find_by(id: params[:id])
     video.delete
