@@ -1,11 +1,13 @@
 class FlashCardsController < ApplicationController
   def create
-    FlashCard.create(flash_card_params)
+    flash = FlashCard.create(flash_card_params)
+    render json: flash
   end
 
   def update
     flash_card = FlashCard.find_by(id: params[:id])
     flash_card.update(flash_card_params)
+    render json: flash_card
   end
 
   def destroy
