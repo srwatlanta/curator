@@ -50,3 +50,59 @@ body {
   transform: rotateY( 180deg );
 }
 
+#flash-card-div {
+  background: #407088;
+}
+
+#art-div {
+  background: #d4d7dd;
+}
+
+#video-div {
+  background: #ffcbcb;
+}
+
+#to-do-div {
+  background: #d4d7dd;
+}
+
+#quote-div {
+  background: #6c7b95;
+  color: #d4d7dd;
+  font-size: 1.5em;
+}
+
+#video-title {
+  margin-right: 5%;
+  margin-top: 12%
+}
+
+#to-do-title {
+  margin-right: 0%;
+}
+
+#card-button-div {
+  position: relative;
+  padding: 5%;
+}
+
+#navbar {
+  background: #95adbe;
+}
+
+#navbar a {
+  color: #5e6073;
+}
+
+#navbar a:hover {
+  color: black;
+  font-style: italic;
+}
+
+.uk-navbar-dropdown-nav li {
+  background: #95adbe
+}
+
+.uk-navbar-dropdown-nav {
+  background: #95adbe
+}
