@@ -53,39 +53,36 @@ function createLi(task){
 
     let editButton = document.createElement("button")
     editButton.addEventListener("click", () => editTask(event, task))
-    editButton.innerText = "edit"
     editButton.className = "edit-button"
     editButton.innerHTML = 
     `
     <li>
        <div class="list-item-menu">
-           <a class="edit-button" uk-toggle="target: #edit-form-container" uk-icon= "icon: pencil"></a>
+           <a class="edit-button" uk-toggle="target: #edit-task-form-container" uk-icon= "icon: pencil"></a>
        </div> 
    </li> 
        `
     
     let doneButton = document.createElement("button")
     doneButton.addEventListener("click", () => finishTask(event, task))
-    doneButton.innerText = "finished"
     doneButton.className = "done-button"
     doneButton.innerHTML = 
     `
     <li>
        <div class="list-item-menu">
-           <a class="done-button" uk-toggle="target: #edit-form-container" uk-icon= "icon: check"></a>
+           <a class="done-button" uk-icon= "icon: check"></a>
        </div> 
    </li> 
        `
 
     let deleteButton = document.createElement("button")
     deleteButton.addEventListener("click", () => deleteTask(event, task))
-    deleteButton.innerText = "delete"
     deleteButton.className = "delete-button"
     deleteButton.innerHTML = 
     `
     <li>
        <div class="list-item-menu">
-           <a class="delete-button" uk-toggle="target: #tasks-list" uk-icon= "icon: trash "></a>
+           <a class="delete-button" uk-icon= "icon: trash "></a>
        </div> 
    </li> 
        `
@@ -120,6 +117,13 @@ function deleteTask(event, id){
     fetch(usersURL, {
         method: "DELETE"
     })
+}
+
+const editTask = (event, task) => {
+    let editTaskName = document.getElementById("edit-task-name")
+    let editTaskComment = document.getElementById("edit-task-comment")
+    editTaskName.value = task.item
+    editTaskComment.value = task.comment
 }
 
 
