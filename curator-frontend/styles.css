@@ -67,7 +67,8 @@ body {
 }
 
 #to-do-div {
-  background: #d4d7dd;
+  background: #d4d7dd
+  li.selected a { text-decoration:line-through; }
 }
 
 #quote-div {

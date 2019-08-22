@@ -1,11 +1,14 @@
+// import { create } from "domain";
+
 let taskId
+let newTaskUser_Id
 const taskList = document.getElementById("tasks-list")
 
 function createLi(task){
 
     let li = document.createElement("li")
     li.className = "task-li"
-    li.id = `to_dos.id`
+    li.id = `to_dos-${task.id}`
 
     let taskDiv = document.createElement("div")
     taskDiv.className = "uk-width-4-5"
@@ -56,21 +59,20 @@ function createLi(task){
        </div> 
    </li> 
        `
-
+  
+       
     let priorityDropDown = document.createElement("button")
     priorityDropDown.addEventListener("click", () => setPriority(event, task))
     priorityDropDown.innerHTML = 
-    `
-    <div class="uk-inline">
-    <button class="uk-button uk-button-default" type="button">Priority</button>
-    <div uk-dropdown="pos: left-center">
-        <ul class="uk-nav uk-dropdown-nav">
+
+    `<div class="uk-inline">
+    <button class="uk-button uk-button-default" pos: left-center type="button">Priority</button> <div uk-dropdown="pos:left-center"</div>
+        <ul class="uk-nav uk-dropdown-nav" >
             <li><a href="#">High</a></li>
             <li><a href="#">Medium</a></li>
             <li><a href="#">Low</a></li>
         </ul>
     </div>
-</div>
     `
 
     buttonDiv.append(priorityDropDown, editButton, doneButton, deleteButton)
@@ -79,19 +81,22 @@ function createLi(task){
     li.append(taskDiv, buttonDiv)
     taskList.append(li) 
 }
-    
-function deleteTask(event, task){
- const list = document.getElementById("tasks-list")
- const li4removal = document.getElementById("to_dos.id")
-    li4removal.parentNode.removeChild(li4removal)
-    fetch(`http://localhost:3000/to_dos/${task.id}`,{
-    method: "delete"
-    })
-}
-
 
 function setId(task){
     taskId = task.id
+}
+
+function deleteTask(event, task){
+ const list = document.getElementById("tasks-list")
+ const li4removal = document.getElementById(`to_dos-${task.id}`)
+    li4removal.parentNode.removeChild(li4removal)
+    fetch(`http://localhost:3000/to_dos/${task.id}`,{ method: "delete"
+    })
+}
+
+function setTaskUserId(task){
+    console.log(task)
+    newTaskUser_Id = task.user_id
 }
 
     const submitEditForm = document.getElementById("edit-task-form")
@@ -113,23 +118,19 @@ function setId(task){
             item: editTaskName.value, 
             comment: editTaskComment.value,
             urgency: editTaskUrgency.value
+         })
         })
-    })
-}
-
-
-
+    }
 
     const submitNewTaskForm = document.getElementById("new-task-form")
     submitNewTaskForm.addEventListener('submit', () => createTask(event))
-
         
     const createTask = (event) => {
         event.preventDefault()
         let newTaskName = document.getElementById("task-name")
         let newTaskComment = document.getElementById("task-comments")
         let newTaskUrgency = document.getElementById("priority")
-        fetch(`http://localhost:3000/to_dos`, {
+        fetch(`http://localhost:3000/to_dos/`, {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json",
@@ -138,12 +139,13 @@ function setId(task){
             body: JSON.stringify({
                 item: newTaskName.value, 
                 comment: newTaskComment.value,
-                urgency: newTaskUrgency.value
+                urgency: newTaskUrgency.value,
+                user_id: userId
             })
             
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => createLi(data))
     }
     
 

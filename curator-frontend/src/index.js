@@ -9,39 +9,20 @@ const fetchUser = () => {
         setUser(data.username)
         setNavBar()
 
-<<<<<<< HEAD
-        data.to_dos.forEach(createLi)
-<<<<<<< HEAD
-<<<<<<< HEAD
+        data.to_dos.forEach(task => createLi(task))
+
+
         // data.flash_cards.forEach(card => flashCardArray.push(card))
         // flashCardCount = 0
         // renderCard(flashCardArray[flashCardCount])
+        
         // data.videos.forEach(video => videoArray.push(video))
         // videoCount = 0
-        // // renderVideo(videoArray[videoCount])
-=======
-=======
->>>>>>> 26434f82ab329a7f65fc882aa7f678a95f698876
-=======
-        data.to_dos.forEach(task => createLi(task))
->>>>>>> b1ce420cf3ef0b0ab8265b739390ae3f1ce0c5dd
-
-        data.flash_cards.forEach(card => flashCardArray.push(card))
-        flashCardCount = 0
-        renderCard(flashCardArray[flashCardCount])
-        
-        data.videos.forEach(video => videoArray.push(video))
-        videoCount = 0
-        renderVideo(videoArray[videoCount])
-<<<<<<< HEAD
-
->>>>>>> fc3bb14afa3e8b0ff7c5a0c8bc5618925cfef290
-=======
->>>>>>> 26434f82ab329a7f65fc882aa7f678a95f698876
+        // renderVideo(videoArray[videoCount])
     })
 }
 
 //FUNCTION CALLS 
 fetchUser()
-searchFetch()
-quoteFetch()
+// searchFetch()
+// quoteFetch()
