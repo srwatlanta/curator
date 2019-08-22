@@ -6,6 +6,7 @@ const deleteFlashCard = document.getElementById("delete-flash-card")
 let flashCardCount
 let flashCardArray = []
 
+
 const renderCard = (card) => {  
     let answerDiv = document.getElementById("card-answer-div")
     answerDiv.innerHTML = `<p class="uk-heading-small uk-position-center">${card.answer}</h3>`
@@ -49,7 +50,7 @@ const newCardFetch = (fClue, fAnswer) => {
     .then(card => flashCardArray.push(card))
 }
 
-const deleteFetch = () => {
+const deleteCardFetch = () => {
     fetch(flashCardUrl + '/' + flashCardArray[flashCardCount].id, {
     method: "DELETE"
     })
@@ -59,5 +60,5 @@ const deleteFetch = () => {
 
 nextFlashCard.addEventListener("click", () => nextCard())
 newFlashCardForm.addEventListener("submit", () => newCard(event))
-deleteFlashCard.addEventListener("click", () => deleteFetch())
+deleteFlashCard.addEventListener("click", () => deleteCardFetch())
     

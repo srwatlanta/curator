@@ -4,7 +4,6 @@ let userId
    
    function createLi(task){
 
-    const list = document.getElementById("tasks-list")
     let li = document.createElement("li")
     li.className = "task-li"
     li.id = `to_dos.id`
@@ -65,7 +64,7 @@ let userId
     `
     <div class="uk-inline">
     <button class="uk-button uk-button-default" type="button">Priority</button>
-    <div uk-dropdown="pos: right-center">
+    <div uk-dropdown="pos: left-center">
         <ul class="uk-nav uk-dropdown-nav">
             <li><a href="#">High</a></li>
             <li><a href="#">Medium</a></li>
@@ -75,11 +74,11 @@ let userId
 </div>
     `
 
-    buttonDiv.append(editButton, doneButton, deleteButton, priorityDropDown)
+    buttonDiv.append(priorityDropDown, editButton, doneButton, deleteButton)
     taskDiv.append(strongspan, span)
 
     li.append(taskDiv, buttonDiv)
-    list.append(li) 
+    taskList.append(li) 
 }
     
 function deleteTask(event, task){
