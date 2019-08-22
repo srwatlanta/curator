@@ -156,6 +156,10 @@ function setId(task){
 
     // const li4strikethrough = document.getElementById("to_dos.id")
     // .addEventListener("click", () => (ev
+    $("li").click(function(event){
+        $("li").removeClass("selected");
+          $(this).addClass("selected");
+      });
 
 
 
