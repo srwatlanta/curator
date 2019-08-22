@@ -62,7 +62,7 @@ function createLi(task){
     priorityDropDown.innerHTML = 
     `
     <div class="uk-inline">
-    <button class="uk-button uk-button-default" type="button">Priority</button>
+    <button class="uk-button uk-button-default uk-button-small" type="button">Priority</button>
     <div uk-dropdown="pos: left-center">
         <ul class="uk-nav uk-dropdown-nav">
             <li><a href="#">High</a></li>
