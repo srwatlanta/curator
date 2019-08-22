@@ -1,10 +1,7 @@
-
 let taskId
-let userId
 const taskList = document.getElementById("tasks-list")
 
 function createLi(task){
-
 
     let li = document.createElement("li")
     li.className = "task-li"
@@ -121,9 +118,7 @@ function setId(task){
 }
 
 
-    function userId(task){
-        task = task.id
-    }
+
 
     const submitNewTaskForm = document.getElementById("new-task-form")
     submitNewTaskForm.addEventListener('submit', () => createTask(event))

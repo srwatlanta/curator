@@ -1,4 +1,3 @@
-
 const usersURL = `http://localhost:3000/users/`
 let userId = 1
 
@@ -10,7 +9,7 @@ const fetchUser = () => {
         setUser(data.username)
         setNavBar()
 
-        data.to_dos.forEach(createLi)
+        data.to_dos.forEach(task => createLi(task))
 
         data.flash_cards.forEach(card => flashCardArray.push(card))
         flashCardCount = 0
