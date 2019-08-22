@@ -14,7 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/js/uikit-icons.min.js"></script>
     <!-- JS -->
 
-    <script src="./src/task.js" defer></script>
+    <script src="./src/task2.js" defer></script>
     <script src="./src/art.js" defer></script>
     <script src="./src/video.js" defer></script>
     <script src="./src/flash.js" defer></script>
@@ -53,8 +53,8 @@
       <div class="uk-flex" uk-grid>
 
         <div id="to-do-div" class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle uk-width-1-3@m"> 
-          <div>          
-            <h2 id="to-do-title" class="uk-heading-small">To Do List</h2>
+          <div class="uk-width-1-3@m">          
+            <h2 id="to-do-title" class="uk-heading-small">To Do</h2>
             <button id="new-to-do-item" class="uk-padding uk-flex-column uk-button uk-button-danger" uk-icon="plus" uk-toggle="target: #new-task-form-container"></button>
 
           </div>
@@ -170,13 +170,13 @@
           <h3>Add New Task</h3>
           <div>
             <div class="uk-margin-small">
-              <input id="task-name" type="text" class="uk-input" placeholder="What should we do?">
+              <input id="new-task-name" type="text" class="uk-input" placeholder="What should we do?">
             </div>
             <div class="uk-margin-small">
-              <textarea id="task-comments" type="text" class="uk-textarea" placeholder="Notes..." style="resize:none"></textarea>
+              <textarea id="new-task-comment" type="text" class="uk-textarea" placeholder="Notes..." style="resize:none"></textarea>
             </div>
             <div class="uk-margin-small">
-              <select id="priority" class="uk-select" placeholder="Priority" style="resize:none">
+              <select id="new-task-priority" class="uk-select" placeholder="Priority" style="resize:none">
                 <option>High</option>
                 <option>Medium</option>
                 <option>Low</option>
