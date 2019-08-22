@@ -3,6 +3,7 @@ const searchBar = document.getElementById("art-search-input")
 const submitButton = document.getElementById("art-search-submit")
 const artSearch = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=/"
 const artSet = "https://collectionapi.metmuseum.org/public/collection/v1/objects/"
+// const artSpan = document.getElementById('art-span')
 
 submitButton.addEventListener("click", () => {
     event.preventDefault()
@@ -26,9 +27,11 @@ const searchFetch = (event, query) => {
 const renderPainting = (painting) => {
     artImgDiv.innerHTML = ""
     artImgDiv.innerHTML = `
-    <img src="${painting.primaryImage}" width="80%" class="uk-img uk-align-center">
-    <h3 class="uk-align-center">Title: ${painting.title}</h3>
-    <p class="uk-align-center">Year: ${painting.objectBeginDate}</p>
+    <img id="paintingImage" src="${painting.primaryImage}" class="uk-img uk-align-center">
+    <div class="overlay">
+        <h3 class="">${painting.title}</h3>
+        <p class="">Year: ${painting.objectBeginDate}</p>
+    </div>
     `
 }
 
