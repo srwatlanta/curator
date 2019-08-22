@@ -1,6 +1,10 @@
+
+let taskId
+let userId
 const taskList = document.getElementById("tasks-list")
 
 function createLi(task){
+
 
     let li = document.createElement("li")
     li.className = "task-li"
@@ -19,8 +23,9 @@ function createLi(task){
     buttonDiv.className = "uk-button-group"
     taskDiv.className = "list-item-menu"
 
+    
     let editButton = document.createElement("button")
-    editButton.addEventListener("click", () => editTask(event, task))
+    editButton.addEventListener("click", ()=> setId(task))
     editButton.className = "edit-button"
     editButton.innerHTML = 
     `
@@ -77,18 +82,82 @@ function createLi(task){
     li.append(taskDiv, buttonDiv)
     taskList.append(li) 
 }
-
-function deleteTask(event, id ){
-    let li = document.getElementById(task.id)
-    li.remove()
-    fetch(usersURL, {
-        method: "DELETE"
+    
+function deleteTask(event, task){
+ const list = document.getElementById("tasks-list")
+ const li4removal = document.getElementById("to_dos.id")
+    li4removal.parentNode.removeChild(li4removal)
+    fetch(`http://localhost:3000/to_dos/${task.id}`,{
+    method: "delete"
     })
 }
 
-const editTask = (event, task) => {
+
+function setId(task){
+    taskId = task.id
+}
+
+    const submitEditForm = document.getElementById("edit-task-form")
+    submitEditForm.addEventListener('submit', () => editTask(event))
+
+    const editTask = (event) => {
+    event.preventDefault()
+    const editTaskURL = `http://localhost:3000/to_dos`
     let editTaskName = document.getElementById("edit-task-name")
     let editTaskComment = document.getElementById("edit-task-comment")
-    editTaskName.value = task.item
-    editTaskComment.value = task.comment
+    let editTaskUrgency = document.getElementById("edit-priority")
+    fetch(`http://localhost:3000/to_dos/${taskId}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type" : "application/json", 
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            item: editTaskName.value, 
+            comment: editTaskComment.value,
+            urgency: editTaskUrgency.value
+        })
+    })
 }
+
+
+    function userId(task){
+        task = task.id
+    }
+
+    const submitNewTaskForm = document.getElementById("new-task-form")
+    submitNewTaskForm.addEventListener('submit', () => createTask(event))
+
+        
+    const createTask = (event) => {
+        event.preventDefault()
+        let newTaskName = document.getElementById("task-name")
+        let newTaskComment = document.getElementById("task-comments")
+        let newTaskUrgency = document.getElementById("priority")
+        fetch(`http://localhost:3000/to_dos`, {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                item: newTaskName.value, 
+                comment: newTaskComment.value,
+                urgency: newTaskUrgency.value
+            })
+            
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+    }
+    
+
+    // const finishTask = (event,task)
+    // //should strikethrough the task upon click 
+
+    // const li4strikethrough = document.getElementById("to_dos.id")
+    // .addEventListener("click", () => (ev
+
+
+
+

@@ -19,7 +19,6 @@ const fetchUser = () => {
         data.videos.forEach(video => videoArray.push(video))
         videoCount = 0
         renderVideo(videoArray[videoCount])
-
     })
 }
 

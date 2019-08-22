@@ -15,7 +15,6 @@
     <!-- JS -->
     <script src="./src/art.js" defer></script>
     <script src="./src/video.js" defer></script>
-    <script src="./src/task.js" defer></script>
     <script src="./src/flash.js" defer></script>
     <script src="./src/quote.js" defer></script>
     <script src="./src/user.js" defer></script>
@@ -166,22 +165,22 @@
       <div class="uk-modal-dialog uk-modal-body">
         <button class="uk-modal-close-default" type="button" uk-close></button>
         <form id="new-task-form">
-          <h3>Insert New task</h3>
+          <h3>Add New Task</h3>
           <div>
             <div class="uk-margin-small">
               <input id="task-name" type="text" class="uk-input" placeholder="What should we do?">
             </div>
             <div class="uk-margin-small">
-              <textarea id="task comments" type="text" class="uk-textarea" placeholder="Notes..." style="resize:none"></textarea>
+              <textarea id="task-comments" type="text" class="uk-textarea" placeholder="Notes..." style="resize:none"></textarea>
             </div>
             <div class="uk-margin-small">
-              <select id="edit-priority" class="uk-select" placeholder="Priority" style="resize:none">
+              <select id="priority" class="uk-select" placeholder="Priority" style="resize:none">
                 <option>High</option>
                 <option>Medium</option>
                 <option>Low</option>
               </select>
             </div>
-            <button class="uk-button uk-button-default" uk-toggle="target: #new-task-form-container">Add Task</button>
+            <button id="new-task-button" class="uk-button uk-button-default" uk-toggle="target: #new-task-form-container">Add Task</button>
           </div>
         </form>
       </div>
@@ -191,10 +190,10 @@
       <div class="uk-modal-dialog uk-modal-body">
         <button class="uk-modal-close-default" type="button" uk-close></button>
         <form id="edit-task-form">
-          <h3>Insert New task</h3>
+          <h3>Edit task</h3>
           <div>
             <div class="uk-margin-small">
-              <input id="edit-task-name" type="text" class="uk-input" placeholder="What should we do?">
+              <input id="edit-task-name" type="text" class="uk-input" placeholder= "Task" >
             </div>
             <div class="uk-margin-small">
               <textarea id="edit-task-comment" type="text" class="uk-textarea" placeholder="Notes..." style="resize:none"></textarea>
@@ -206,7 +205,7 @@
                 <option>Low</option>
               </select>
             </div>
-            <button class="uk-button uk-button-default" uk-toggle="target: #edit-task-form-container">Add Task</button>
+            <button class="uk-button uk-button-default" id="edit-button" uk-toggle="target: #edit-task-form-container">Update Task</button>
           </div>
         </form>
       </div>
