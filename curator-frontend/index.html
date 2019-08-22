@@ -13,93 +13,118 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/js/uikit-icons.min.js"></script>
     <!-- JS -->
-    <script src="./src/task.js" defer></script>
-    <script src="./src/index.js" defer></script>
     <script src="./src/art.js" defer></script>
     <script src="./src/video.js" defer></script>
     <script src="./src/flash.js" defer></script>
+    <script src="./src/quote.js" defer></script>
+    <script src="./src/user.js" defer></script>
+    <script src="./src/index.js" defer></script>
 
   </head>
   <body>
-    <header class="uk-align-center">
-      <h2 class="uk-heading-large">Curator</h2>
-    </header>
-    <main>
+    <nav id="navbar" class="uk-navbar-container uk-margin" uk-navbar="mode: click">
+      <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+          <li>
+            <a class="uk-navbar-item uk-logo">Curator</a>
+          </li>
+        </ul>
+      </div>
+      <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+          <li>
+            <a id="navbar-user-display" uk-icon="user"></a>
+              <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                  <li id ="active-li"><a id="user-drop-active" class="uk-active" uk-icon="user" href="#" uk></a></li>
+                  <li id="inactive-li"><a id="user-drop-inactive" uk-icon="user" href="#"></a></li>
+                </ul>
+              </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-      <div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: true">
 
-        <div id="tasks-collection" class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle"> 
+    <main class="uk-padding-large uk-padding-remove-top">
+
+      <div class="uk-flex" uk-grid>
+
+        <div id="to-do-div" class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle uk-width-1-3@m"> 
           <div>          
-            <h2 class="uk-heading-small">To Do List</h2>
+            <h2 id="to-do-title" class="uk-heading-small">To Do List</h2>
             <button id="new-to-do-item" class="uk-padding uk-flex-column uk-button uk-button-danger" uk-icon="plus" uk-toggle="target: #new-task-form-container"></button>
 
           </div>
           <div>
-            <ul id ="tasks-list" class="uk-list uk-list-striped">
+            <ul id ="tasks-list" class="uk-list uk-list-divider">
             </ul>
           </div>
         </div>
 
-        
-        <div id= "flash-card-div" class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle">
-          <div id="card-button-div" class="uk-align-center">
-            <div>
-                <button id="next-flash-card" class="uk-padding uk-flex-column uk-button uk-button-danger" uk-icon="arrow-right"></button>
-            </div>
-            <div>
-                <button id="new-flash-card" class="uk-padding uk-flex-column uk-button uk-button-danger" uk-icon="plus" uk-toggle="target: #new-flash-card-form-container"></button>
-            </div>
-            <div>
-                <button id="delete-flash-card" class="uk-padding uk-flex-column uk-button uk-button-danger" uk-icon="trash"></button>
-            </div>
-          </div>
-          <div class="uk-align-center uk-padding">
-            <div class="card uk-align-left uk-padding">
-              <div class="content">
-                <div id= "card-clue-div" class="front">
-                </div>
-                <div id= "card-answer-div" class="back">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> 
-        
-        <div id="art-div" class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middleuk-padding">
+      <div id="art-div" class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middleuk-padding uk-width-1-3@m">
           <div>
             <form id="art-div-form" class="uk-card-header">
-              <h3>Art!</h3>
+              <h3 id="art-title">Art!</h3>
               <div class="uk-margin-small">
                 <input id="art-search-input" class="uk-search-input" type="search" placeholder="Paintings!">
               </div>
               <button id="art-search-submit" class="uk-button uk-button-danger" uk-icon="search">Search</button>      
             </form>
           </div>
-          <div id= "art-div" class="">
-            <div id="art-img-div">
+          <div id= "art-div">
+            <div id="art-img-div" class="uk-position-bottom-center">
+              <span id="art-span"> </span>
             </div>
           </div>
         </div>
 
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middleuk-padding" id= "video-div" >
-          <div id="video-player" class="uk-video">
-            <iframe id="embed-video" src="" width="100%" height="100%" frameborder="0" uk-video="autoplay: false"></iframe>
-          </div> 
-          <div id="card-button-div" class="uk-align-center">
-            <div>
-                <button id="next-video" class="uk-padding uk-flex-column uk-button uk-button-danger" uk-icon="arrow-right"></button>
+        <div id= "flash-card-div" class="uk-card uk-padding-small uk-card-default uk-flex uk-flex-center uk-flex-middle uk-width-1-3@m">
+          <div class="uk-align-center uk-padding">
+              <div class="card uk-align-left uk-padding">
+                <div class="content">
+                  <div id= "card-clue-div" class="front">
+                  </div>
+                  <div id= "card-answer-div" class="back">
+                  </div>
+                </div>
+              </div>
             </div>
+          <h2 class="uk-heading-small">Flash Cards</h2>
+          <div id="card-button-div" class="uk-position-top-right">
             <div>
-                <button id="new-video" class="uk-padding uk-flex-column uk-button uk-button-danger" uk-icon="plus" uk-toggle="target: #new-video-form-container"></button>
-            </div>
-            <div>
-                <button id="delete-video" class="uk-padding uk-flex-column uk-button uk-button-danger" uk-icon="trash"></button>
+              <button id="next-flash-card" class="uk-button uk-button-danger" uk-icon="arrow-right"></button>
+              <button id="new-flash-card" class="uk-button uk-button-danger" uk-icon="plus" uk-toggle="target: #new-flash-card-form-container"></button>
+              <button id="delete-flash-card" class="uk-button uk-button-danger" uk-icon="trash"></button>
             </div>
           </div>
         </div> 
 
-           
+        <div id="quote-div" class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle uk-width-1-2@m">
+            <h2 class="uk-heading">Quote of the Moment</h2>
+            <div id="quote-content-div">
+            </div>
+        </div>
 
+        <div id="video-div" class="uk-card-large uk-padding-bottom-large uk-flex uk-width-1-2@m" >
+          <div id="card-button-div" class="uk-align-center">
+            <div>
+                <button id="next-video" class="uk-margin-small-bottom uk-padding-small uk-flex-column uk-button uk-button-danger" uk-icon="arrow-right"></button>
+            </div>
+            <div>
+                <button id="new-video" class="uk-margin-small-bottom uk-padding-small uk-flex-column uk-button uk-button-danger" uk-icon="plus" uk-toggle="target: #new-video-form-container"></button>
+            </div>
+            <div>
+                <button id="delete-video" class="uk-margin-small-bottom uk-padding-small uk-flex-column uk-button uk-button-danger" uk-icon="trash"></button>
+            </div>
+          </div>
+          <div id="video-player" class="uk-video">
+            <iframe id="embed-video" src="" width="500" height="375" frameborder="0" uk-video="autoplay: false"></iframe>
+          </div>
+          <div class="uk-heading">
+              <h2 id="video-title">Playlist</h2>
+          </div>
+        </div> 
       </div>    
     </main>
 
@@ -128,7 +153,7 @@
           <h3>Insert New Video</h3>
           <div>
             <div class="uk-margin-small">
-              <input id="flash-clue" type="text" class="uk-input" placeholder="Video Url">
+              <input id="submit-url" type="text" class="uk-input" placeholder="Video Url">
             </div>
             <button class="uk-button uk-button-default" uk-toggle="target: #new-video-form-container">Add Video</button>
           </div>

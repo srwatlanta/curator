@@ -16,9 +16,9 @@ body {
 }
 
 .content {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  /* position: relative; */
+  width: 85%;
+  height: 85%;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
 
   transition: transform 1s;
@@ -44,9 +44,142 @@ body {
   backface-visibility: hidden;
 }
 
+.front {
+  background: #d7d1c9;
+}
+
 .back {
   background: pink;
   /* color: ; */
   transform: rotateY( 180deg );
 }
 
+#flash-card-div {
+  background: #407088;
+}
+
+#video-div {
+  background: #d4d7dd;
+}
+
+#art-div {
+  background: #ffcbcb;
+}
+
+#to-do-div {
+  background: #d4d7dd;
+}
+
+#quote-div {
+  background: #6c7b95;
+  color: #d4d7dd;
+  font-size: 1.5em;
+}
+
+#video-title {
+  margin-right: 5%;
+  margin-top: 12%
+}
+
+#to-do-title {
+  margin-right: 0%;
+}
+
+#card-button-div {
+  position: relative;
+  padding: 5%;
+}
+
+#navbar {
+  background: #95adbe;
+}
+
+#navbar a {
+  color: #5e6073;
+}
+
+#navbar a:hover {
+  color: black;
+  font-style: italic;
+}
+
+.uk-navbar-dropdown-nav li {
+  background: #95adbe
+}
+
+.uk-navbar-dropdown-nav {
+  background: #95adbe
+}
+
+#quote-content-div {
+  text-shadow: black;
+}
+
+/* #embed-video {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+#embed-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+} */
+
+#paintingImage {
+  width: 300px;
+  height: 300px;
+}
+
+#video-title {
+  transform: rotate(90deg);
+  transform-origin: left top 0;
+  margin-left: 80%;
+}
+
+#art-title {
+  font-size: 3em;
+}
+
+#art-img-div {
+  position: relative;
+  box-sizing: border-box;
+}
+
+#paintingImage {
+  display: block;
+  box-sizing: border-box;
+}
+
+.overlay {
+  box-sizing: border-box;
+  position: absolute; 
+  margin-bottom: 30px;
+  bottom: 0; 
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1; 
+  width: 100%;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 15px;
+  padding: 10px;
+  text-align: center;
+}
+
+.overlay h3 {
+  color: white;
+  margin: 0;
+}
+
+.overlay p {
+  margin: 0;
+}
+
+#art-img-div:hover .overlay {
+  opacity: 1;
+}
