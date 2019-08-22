@@ -1,4 +1,3 @@
-
 const usersURL = `http://localhost:3000/users/`
 let userId = 1
 
@@ -10,6 +9,7 @@ const fetchUser = () => {
         setUser(data.username)
         setNavBar()
 
+<<<<<<< HEAD
         data.to_dos.forEach(createLi)
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -22,6 +22,9 @@ const fetchUser = () => {
 =======
 =======
 >>>>>>> 26434f82ab329a7f65fc882aa7f678a95f698876
+=======
+        data.to_dos.forEach(task => createLi(task))
+>>>>>>> b1ce420cf3ef0b0ab8265b739390ae3f1ce0c5dd
 
         data.flash_cards.forEach(card => flashCardArray.push(card))
         flashCardCount = 0
