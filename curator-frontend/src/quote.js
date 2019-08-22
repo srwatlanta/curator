@@ -14,7 +14,7 @@ const quoteFetch = () => {
 const renderQuote= (quote, author) => {
     let inner = `
     <p>${quote}</p>
-    <p>-<em>${author}</em></p>
+    <p class="author" >-<em>${author}</em></p>
     `
     quoteDiv.innerHTML = inner
 }

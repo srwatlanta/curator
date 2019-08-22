@@ -64,10 +64,11 @@ function createLi(task){
     let priorityDropDown = document.createElement("button")
     priorityDropDown.addEventListener("click", () => setPriority(event, task))
     priorityDropDown.innerHTML = 
-
-    `<div class="uk-inline">
-    <button class="uk-button uk-button-default" pos: left-center type="button">Priority</button> <div uk-dropdown="pos:left-center"</div>
-        <ul class="uk-nav uk-dropdown-nav" >
+    `
+    <div class="uk-inline">
+    <button class="uk-button uk-button-default uk-button-small" type="button">Priority</button>
+    <div uk-dropdown="pos: left-center">
+        <ul class="uk-nav uk-dropdown-nav">
             <li><a href="#">High</a></li>
             <li><a href="#">Medium</a></li>
             <li><a href="#">Low</a></li>
