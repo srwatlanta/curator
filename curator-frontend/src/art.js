@@ -1,10 +1,11 @@
+//ART CONSTANTS
 const artImgDiv = document.getElementById("art-img-div")
 const searchBar = document.getElementById("art-search-input")
 const submitButton = document.getElementById("art-search-submit")
 const artSearch = "https://collectionapi.metmuseum.org/public/collection/v1/search?q=/"
 const artSet = "https://collectionapi.metmuseum.org/public/collection/v1/objects/"
-// const artSpan = document.getElementById('art-span')
 
+//SEARCH
 submitButton.addEventListener("click", () => {
     event.preventDefault()
     query = searchBar.value
@@ -12,6 +13,7 @@ submitButton.addEventListener("click", () => {
     searchBar.value = ""
 })
 
+//READ
 const searchFetch = (event, query) => {
     fetch(artSearch + query)
     .then(res => res.json())
@@ -35,6 +37,7 @@ const renderPainting = (painting) => {
     `
 }
 
+//HELPER METHOD
 const randomNum = (length) => {
     return Math.floor(Math.random() * length)
 }

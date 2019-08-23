@@ -1,3 +1,4 @@
+//TASK CONSTANTS
 const taskUrl = "http://localhost:3000/to_dos"
 const taskList = document.getElementById("tasks-list")
 const editTaskForm = document.getElementById("edit-task-form-container")
@@ -13,6 +14,7 @@ const newTaskSubmit = document.getElementById("new-task-button")
 let taskId
 let editId
 
+//READ
 const createLi = (task) => {
     let li = document.createElement("li")
     li.className = "task-li"
@@ -59,6 +61,7 @@ const completeTask = (event, id) => {
     }
 }
 
+//UPDATE
 const setEditId = (task) => {
     editTaskItem.value = task.item
     editTaskComment.value = task.comment
@@ -80,6 +83,7 @@ const patchTask = (event) => {
     })
 }
 
+//CREATE
 const createTask = event => {
     fetch(taskUrl, {
         method: "POST",
@@ -96,6 +100,7 @@ const createTask = event => {
     })
 }
 
+//DELETE
 const deleteTask = (task) => {
     fetch(taskUrl + '/' + task.id, {
         method: "DELETE"
@@ -108,5 +113,6 @@ const removeLine = (id) => {
     line.remove()
 }
 
+//EVENT LISTENERS
 newTaskForm.addEventListener("submit", () => createTask(event))
 editTaskForm.addEventListener("submit", () => patchTask(event))

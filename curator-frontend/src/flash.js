@@ -1,3 +1,4 @@
+//FLASH CONSTANTS
 const flashCardUrl = "http://localhost:3000/flash_cards"
 const nextFlashCard = document.getElementById("next-flash-card")
 const newFlashCardForm = document.getElementById("new-flash-card-form-container")
@@ -6,7 +7,7 @@ const deleteFlashCard = document.getElementById("delete-flash-card")
 let flashCardCount
 let flashCardArray = []
 
-
+//READ
 const renderCard = (card) => {  
     let answerDiv = document.getElementById("card-answer-div")
     answerDiv.innerHTML = `<p class="uk-heading-small uk-position-center">${card.answer}</p>`
@@ -24,6 +25,7 @@ const nextCard = () => {
     renderCard(flashCardArray[flashCardCount])
 }
 
+//CREATE
 const newCard = (event) => {
     event.preventDefault()
     fClue = document.getElementById("flash-clue")
@@ -50,6 +52,7 @@ const newCardFetch = (fClue, fAnswer) => {
     .then(card => flashCardArray.push(card))
 }
 
+//DELETE
 const deleteCardFetch = () => {
     fetch(flashCardUrl + '/' + flashCardArray[flashCardCount].id, {
     method: "DELETE"
@@ -58,6 +61,7 @@ const deleteCardFetch = () => {
     .then(nextCard())
 }
 
+//EVENT LISTENERS
 nextFlashCard.addEventListener("click", () => nextCard())
 newFlashCardForm.addEventListener("submit", () => newCard(event))
 deleteFlashCard.addEventListener("click", () => deleteCardFetch())

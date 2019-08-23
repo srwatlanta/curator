@@ -1,3 +1,4 @@
+//VIDEO CONSTANTS
 const videoUrl = "http://localhost:3000/videos"
 const nextVideoButton = document.getElementById("next-video")
 const newVideoForm = document.getElementById("new-video-form")
@@ -6,14 +7,15 @@ const deleteVideo = document.getElementById("delete-video")
 let videoCount
 let videoArray = []
 
+//READ
+const renderVideo = (video) => {
+    videoDiv.src = embeddabbleVideo(video.video_url)
+}
 
+//HELPER METHOD
 const embeddabbleVideo = (url) => {
     let x = url.split("=")
     return "https://www.youtube.com/embed/" + x[1]
-}
-
-const renderVideo = (video) => {
-    videoDiv.src = embeddabbleVideo(video.video_url)
 }
 
 const nextVideo = () => {
@@ -25,6 +27,7 @@ const nextVideo = () => {
     renderVideo(videoArray[videoCount])
 }
 
+//CREATE
 const newVideo = (event) => {
     event.preventDefault()
     submitUrl = document.getElementById("submit-url")
@@ -48,6 +51,7 @@ const newVideoFetch = (submitUrl) => {
     .then(video => videoArray.push(video))
 }
 
+//DELETE
 const deleteVideoFetch = () => {
     fetch(videoUrl + '/' + videoArray[videoCount].id, {
     method: "DELETE"
@@ -56,8 +60,7 @@ const deleteVideoFetch = () => {
     .then(nextVideo())
 }
 
-
-
+//EVENT LISTENERS
 nextVideoButton.addEventListener("click", () => nextVideo())
 newVideoForm.addEventListener("submit", () => newVideo(event))
 deleteVideo.addEventListener("click", () => deleteVideoFetch())

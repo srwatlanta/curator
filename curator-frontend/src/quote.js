@@ -1,6 +1,8 @@
+//QUOTE CONSTANTS
 const quoteDiv = document.getElementById("quote-content-div")
 const quoteUrl = "http://quotes.rest/qod.json?category=inspire"
 
+//READ
 const quoteFetch = () => {
     fetch(quoteUrl)
     .then(res => res.json())
