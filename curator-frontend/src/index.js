@@ -1,7 +1,8 @@
+//GLOBAL CONSTANTS
 const usersURL = `http://localhost:3000/users/`
 let userId = 1
 
-   //READ
+//RUN PAGE
 const fetchUser = () => {
     fetch(usersURL + userId)
     .then(res => res.json())

@@ -1,3 +1,4 @@
+//USER CONSTANTS
 let inactiveButton
 const inactiveUserLi = document.getElementById("inactive-li")
 const activeUserButton = document.getElementById("user-drop-active")
@@ -7,7 +8,7 @@ const dropDown = document.getElementsByClassName("uk-navbar-dropdown")
 let currentUser
 let newUser
 
-
+//SWITCH USERS
 const switchUser = (newUser) => {
     if(newUser == "Ehawkins"){
         return userId = 2
@@ -25,6 +26,14 @@ const resetValues = () => {
     backgroundArray = []
 }
 
+const resetStuff = () => {
+    // console.log("whastup")
+    switchUser(newUser)
+    resetValues()
+    fetchUser()
+}
+
+//SET USERS
 const setUser = (username) => {
     if(username == "srwatlanta") {
         currentUser = "srwatlanta"
@@ -43,9 +52,3 @@ const setNavBar = () => {
     inactiveButton.addEventListener("click", () => resetStuff())         
 }
 
-const resetStuff = () => {
-    // console.log("whastup")
-    switchUser(newUser)
-    resetValues()
-    fetchUser()
-}
