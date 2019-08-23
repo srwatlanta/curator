@@ -9,10 +9,10 @@ let flashCardArray = []
 
 const renderCard = (card) => {  
     let answerDiv = document.getElementById("card-answer-div")
-    answerDiv.innerHTML = `<p class="uk-heading-small uk-position-center">${card.answer}</h3>`
+    answerDiv.innerHTML = `<p class="uk-heading-small uk-position-center">${card.answer}</p>`
 
     let clueDiv = document.getElementById("card-clue-div")
-    clueDiv.innerHTML = `<p class="uk-heading-medium uk-position-center">${card.clue}</h1>`
+    clueDiv.innerHTML = `<p class="uk-heading-medium uk-position-center">${card.clue}</p>`
 }
 
 const nextCard = () => {

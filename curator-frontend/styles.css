@@ -1,8 +1,4 @@
 
-body {
-  background: #eee;
-
-}
 
 .card {
   position: relative;
@@ -199,4 +195,8 @@ body {
 
 .line-through {
   text-decoration: line-through;
+}
+
+.third-div {
+  padding: 10px;
 }
