@@ -22,6 +22,7 @@ const resetValues = () => {
     flashCardArray = []
     flashCardCount = 0
     taskList.innerHTML = ""
+    backgroundArray = []
 }
 
 const setUser = (username) => {
